@@ -7,11 +7,21 @@ import more_icon from '../assets/more.png';
 import notification_icon from '../assets/notification.png';
 import profile_icon from '../assets/jack.png';
 
-const NavBar = () => {
+interface NavBarProps {
+  setSidebarOpen: (open: boolean) => void;
+  sidebarOpen: boolean;
+}
+
+const NavBar = ({ setSidebarOpen, sidebarOpen }: NavBarProps) => {
   return (
     <nav className={style.navBar + ' flexDiv'}>
       <div className={style.navLeft + ' flexDiv'}>
-        <img className={style.menuIcon} src={menu_icon} alt='Menu Icon' />
+        <img
+          className={style.menuIcon}
+          src={menu_icon}
+          alt='Menu Icon'
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        />
         <img className={style.logo} src={logo} alt='Logo' />
       </div>
 

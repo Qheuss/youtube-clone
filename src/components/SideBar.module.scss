@@ -1,0 +1,78 @@
+.sideBar {
+  background: #fff;
+  height: 100vh;
+  width: 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 1%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  z-index: 11;
+
+  .navLogo {
+    padding: 10px 8px;
+    height: 58px;
+
+    .menuIcon {
+      width: 22px;
+      margin-right: 25px;
+    }
+
+    .logo {
+      width: 130px;
+    }
+  }
+
+  .sortLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+
+    img {
+      width: 18px;
+      margin-right: 20px;
+    }
+  }
+
+  .subscribedList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px;
+
+    h3 {
+      margin: 6px 0 4px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .sideLink {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 12px 0;
+    width: 90%;
+  }
+}

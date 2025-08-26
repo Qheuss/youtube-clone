@@ -1,4 +1,4 @@
-import style from './Video.module.css';
+import style from './Video.module.scss';
 
 const Video = () => {
   return <div className={style.video}></div>;

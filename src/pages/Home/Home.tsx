@@ -1,7 +1,17 @@
-import style from './Home.module.css';
+import SideBar from '../../components/SideBar';
+import style from './Home.module.scss';
 
-const Home = () => {
-  return <div className={style.home}></div>;
+interface HomeProps {
+  sidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
+}
+
+const Home = ({ sidebarOpen, setSidebarOpen }: HomeProps) => {
+  return (
+    <div className={style.homePage}>
+      <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    </div>
+  );
 };
 
 export default Home;
