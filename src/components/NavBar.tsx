@@ -22,7 +22,9 @@ const NavBar = ({ setSidebarOpen, sidebarOpen }: NavBarProps) => {
           alt='Menu Icon'
           onClick={() => setSidebarOpen(!sidebarOpen)}
         />
-        <img className={style.logo} src={logo} alt='Logo' />
+        <a href='/'>
+          <img className={style.logo} src={logo} alt='Logo' />
+        </a>
       </div>
 
       <div className={style.navMiddle + ' flexDiv'}>

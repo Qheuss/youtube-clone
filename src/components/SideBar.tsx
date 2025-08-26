@@ -24,7 +24,9 @@ interface SideBarProps {
 const SideBar = ({ sidebarOpen, setSidebarOpen }: SideBarProps) => {
   return (
     <section
-      style={{ display: sidebarOpen ? 'block' : 'none' }}
+      style={{
+        translate: sidebarOpen ? '0' : '-240px',
+      }}
       className={style.sideBar}
     >
       <div className={style.navLogo + ' flexDiv'}>
@@ -34,7 +36,9 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: SideBarProps) => {
           alt='Menu Icon'
           onClick={() => setSidebarOpen(!sidebarOpen)}
         />
-        <img className={style.logo} src={logo} alt='Logo' />
+        <a href='/'>
+          <img className={style.logo} src={logo} alt='Logo' />
+        </a>
       </div>
 
       <div className={style.sortLinks}>

@@ -1,5 +1,5 @@
 .navBar {
-  padding: 10px 1%;
+  padding: 10px 20px;
   justify-content: space-between;
   background: #fff;
   position: sticky;
@@ -12,6 +12,7 @@
     .menuIcon {
       width: 22px;
       margin-right: 25px;
+      cursor: pointer;
     }
 
     .logo {

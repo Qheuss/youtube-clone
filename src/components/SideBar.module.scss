@@ -1,54 +1,15 @@
 .sideBar {
   background: #fff;
   height: 100vh;
-  width: 10%;
   position: fixed;
+  width: 240px;
   top: 0;
   left: 0;
-  padding-left: 1%;
+  padding: 0 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-size: 14px;
+  transition: translate 0.3s ease;
   z-index: 11;
-
-  .navLogo {
-    padding: 10px 8px;
-    height: 58px;
-
-    .menuIcon {
-      width: 22px;
-      margin-right: 25px;
-    }
-
-    .logo {
-      width: 130px;
-    }
-  }
-
-  .sortLinks {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 12px;
-
-    img {
-      width: 18px;
-      margin-right: 20px;
-    }
-  }
-
-  .subscribedList {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 8px;
-
-    h3 {
-      margin: 6px 0 4px 0;
-      font-size: 15px;
-      font-weight: 600;
-      color: #333;
-    }
-  }
 
   .sideLink {
     display: flex;
@@ -66,6 +27,47 @@
       height: 32px;
       border-radius: 50%;
       margin-right: 12px;
+    }
+  }
+
+  .navLogo {
+    padding: 10px 8px;
+    height: 58px;
+
+    .menuIcon {
+      width: 22px;
+      margin-right: 25px;
+      cursor: pointer;
+    }
+
+    .logo {
+      width: 130px;
+    }
+  }
+
+  .sortLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+
+    img {
+      width: 24px;
+      height: 24px;
+      margin-right: 20px;
+    }
+  }
+
+  .subscribedList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    h3 {
+      margin: 6px 0 4px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
     }
   }
 

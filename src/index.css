@@ -1,5 +1,7 @@
-:root {
-  --primary: #00ff6a;
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #00ff6a;
 }
 
 * {

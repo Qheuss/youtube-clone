@@ -1,3 +1,4 @@
+import Feed from '../../components/Feed';
 import SideBar from '../../components/SideBar';
 import style from './Home.module.scss';
 
@@ -10,6 +11,13 @@ const Home = ({ sidebarOpen, setSidebarOpen }: HomeProps) => {
   return (
     <div className={style.homePage}>
       <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <div
+        className={
+          style.feedContainer + (sidebarOpen ? style.largeContainer : '')
+        }
+      >
+        <Feed sidebarOpen={sidebarOpen} />
+      </div>
     </div>
   );
 };

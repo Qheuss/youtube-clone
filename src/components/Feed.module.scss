@@ -1,0 +1,49 @@
+.feed {
+  display: flex;
+
+  .sidebar {
+    transition: min-width 0.3s ease;
+  }
+
+  .feedContainer {
+    padding: 0 30px;
+    margin-top: 30px;
+    width: 100%;
+
+    .feedItem {
+      a {
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+
+        .videoInfo {
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+          padding: 0 10px;
+          h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 8px;
+
+            color: #1b1b1b;
+          }
+
+          h3 {
+            font-size: 0.875rem;
+            color: #606060;
+          }
+
+          span {
+            font-size: 0.875rem;
+            color: #555555;
+          }
+        }
+      }
+    }
+  }
+}
