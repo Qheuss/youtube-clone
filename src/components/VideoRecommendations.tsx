@@ -76,7 +76,26 @@ const VideoRecommendations = () => {
     },
   ];
 
-  return <div className={style.recommendations}></div>;
+  return (
+    <div className={style.recommendations}>
+      {videos.map((video) => (
+        <button key={video.id} className={style.videoCard}>
+          <img
+            src={video.thumbnail}
+            alt={video.title}
+            className={style.thumbnail}
+          />
+          <div className={style.videoInfo}>
+            <h4 className={style.videoTitle}>{video.title}</h4>
+            <p className={style.channelName}>{video.channel}</p>
+            <p
+              className={style.videoStats}
+            >{`${video.views} • ${video.date}`}</p>
+          </div>
+        </button>
+      ))}
+    </div>
+  );
 };
 
 export default VideoRecommendations;
