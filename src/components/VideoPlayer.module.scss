@@ -2,18 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
-  video {
-    width: 100%;
+  iframe {
+    aspect-ratio: 16 / 9;
     border-radius: 15px;
-    max-width: 1280px;
-    height: auto;
   }
 
   .video_details {
-    width: 100%;
-    max-width: 1280px;
     margin-top: 20px;
+    width: 100%;
 
     h1 {
       font-size: 20px;
@@ -56,15 +54,16 @@
         }
 
         .subscribe_button {
-          background-color: #000;
-          color: white;
+          color: #d30303;
           border: none;
           border-radius: 8px;
           padding: 5px 10px;
           cursor: pointer;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
           &:hover {
-            background-color: #113500;
+            background-color: #d30303;
+            color: white;
           }
         }
       }

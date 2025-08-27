@@ -4,6 +4,10 @@
   --color-primary: #00ff6a;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;

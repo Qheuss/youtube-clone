@@ -13,7 +13,7 @@ const Video = ({ sidebarOpen }: VideoProps) => {
         style={{ minWidth: sidebarOpen ? '240px' : '0' }}
         className={style.sidebar}
       ></div>
-      <div className={style.video + ' !container !mx-auto'}>
+      <div className={style.video}>
         <VideoPlayer />
         <VideoRecommendations />
       </div>
