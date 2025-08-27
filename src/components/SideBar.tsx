@@ -19,9 +19,16 @@ import cameron from '../assets/cameron.png';
 interface SideBarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
+  category: number;
+  setCategory: (category: number) => void;
 }
 
-const SideBar = ({ sidebarOpen, setSidebarOpen }: SideBarProps) => {
+const SideBar = ({
+  sidebarOpen,
+  setSidebarOpen,
+  category,
+  setCategory,
+}: SideBarProps) => {
   return (
     <section
       style={{
@@ -42,47 +49,92 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: SideBarProps) => {
       </div>
 
       <div className={style.sortLinks}>
-        <div className={style.sideLink}>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 0 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(0)}
+        >
           <img src={home} alt='Home' />
           <span>Home</span>
         </div>
 
-        <div className={style.sideLink}>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 20 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(20)}
+        >
           <img src={game_icon} alt='Gaming' />
           <span>Gaming</span>
         </div>
 
-        <div className={style.sideLink}>
-          <img src={automobiles} alt='Automobiles' />
-          <span>Automobiles</span>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 10 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(10)}
+        >
+          <img src={automobiles} alt='Music' />
+          <span>Music</span>
         </div>
 
-        <div className={style.sideLink}>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 17 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(17)}
+        >
           <img src={sports} alt='Sports' />
           <span>Sports</span>
         </div>
 
-        <div className={style.sideLink}>
-          <img src={entertainment} alt='Entertainment' />
-          <span>Entertainment</span>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 15 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(15)}
+        >
+          <img src={entertainment} alt='Pets & Animals' />
+          <span>Pets & Animals</span>
         </div>
 
-        <div className={style.sideLink}>
-          <img src={tech} alt='Tech' />
-          <span>Tech</span>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 28 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(28)}
+        >
+          <img src={tech} alt='Science & Technology' />
+          <span>Science & Technology</span>
         </div>
 
-        <div className={style.sideLink}>
-          <img src={music} alt='Music' />
-          <span>Music</span>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 23 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(23)}
+        >
+          <img src={music} alt='Comedy' />
+          <span>Comedy</span>
         </div>
 
-        <div className={style.sideLink}>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 22 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(22)}
+        >
           <img src={blogs} alt='Blogs' />
           <span>Blogs</span>
         </div>
 
-        <div className={style.sideLink}>
+        <div
+          className={
+            style.sideLink + ' ' + (category === 25 ? 'bg-black/10' : '')
+          }
+          onClick={() => setCategory(25)}
+        >
           <img src={news} alt='News' />
           <span>News</span>
         </div>

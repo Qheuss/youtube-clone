@@ -1,22 +1,20 @@
 import Feed from '../../components/Feed';
-import SideBar from '../../components/SideBar';
 import style from './Home.module.scss';
 
 interface HomeProps {
   sidebarOpen: boolean;
-  setSidebarOpen: (open: boolean) => void;
+  category: number;
 }
 
-const Home = ({ sidebarOpen, setSidebarOpen }: HomeProps) => {
+const Home = ({ sidebarOpen, category }: HomeProps) => {
   return (
     <div className={style.homePage}>
-      <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div
         className={
           style.feedContainer + (sidebarOpen ? style.largeContainer : '')
         }
       >
-        <Feed sidebarOpen={sidebarOpen} />
+        <Feed sidebarOpen={sidebarOpen} category={category} />
       </div>
     </div>
   );
