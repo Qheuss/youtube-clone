@@ -11,10 +11,10 @@ const VideoPlayer = () => {
     <div className={style.video_player}>
       <video src={video1} controls autoPlay={false} />
       <section className={style.video_details}>
+        <h1>Video Title</h1>
         <div className={style.video_info}>
-          <h2>Video Title</h2>
-          <div className='flex justify-between'>
-            <div className={style.channel_info}>
+          <div className={style.channel_info}>
+            <button className={style.channel_button}>
               <img
                 src={user_profile}
                 alt='Channel'
@@ -24,32 +24,34 @@ const VideoPlayer = () => {
                 <h3>Channel Name</h3>
                 <p>1M subscribers</p>
               </div>
-              <button className={style.subscribe_button}>Subscribe</button>
-            </div>
+            </button>
+            <button className={style.subscribe_button}>Subscribe</button>
+          </div>
 
-            <div className={style.video_actions}>
+          <div className={style.video_actions}>
+            <div className={style.like_buttons}>
               <button>
                 <img src={likeIcon} alt='Like' />
-                123K
+                <span>123K</span>
               </button>
+              <hr />
               <button>
                 <img src={dislikeIcon} alt='Dislike' />
-                Dislike
-              </button>
-              <button>
-                <img src={shareIcon} alt='Share' />
-                Share
-              </button>
-              <button>
-                <img src={saveIcon} alt='Save' />
-                Save
               </button>
             </div>
+            <button className={style.share_button}>
+              <img src={shareIcon} alt='Share' />
+              Share
+            </button>
+            <button className={style.save_button}>
+              <img src={saveIcon} alt='Save' />
+              Save
+            </button>
           </div>
         </div>
 
         <div className={style.video_description}>
-          <h4>1,234,567 views &bull; Jan 1, 2023</h4>
+          <span>1,234,567 views &bull; Jan 1, 2023</span>
           <p>
             This is a sample video description. It provides information about
             the video content, links, and other relevant details.

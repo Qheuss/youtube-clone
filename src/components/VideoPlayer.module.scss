@@ -17,21 +17,146 @@
     max-width: 1280px;
     margin-top: 20px;
 
+    h1 {
+      font-size: 20px;
+      font-weight: bolder;
+      margin-bottom: 10px;
+    }
+
     .video_info {
-      h2 {
-        font-size: 20px;
-        font-weight: bold;
-      }
+      display: flex;
+      justify-content: space-between;
+
       .channel_info {
         display: flex;
         align-items: center;
+        gap: 20px;
+
+        .channel_button {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+
+          img {
+            border-radius: 40%;
+            width: 40px;
+            height: 40px;
+          }
+
+          .channel_details {
+            h3 {
+              font-size: 16px;
+              font-weight: bold;
+            }
+
+            p {
+              font-size: 14px;
+              color: gray;
+            }
+          }
+        }
+
+        .subscribe_button {
+          background-color: #000;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          padding: 5px 10px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #113500;
+          }
+        }
+      }
+
+      .video_actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .like_buttons {
+          display: flex;
+          align-items: center;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+          hr {
+            height: 80%;
+            background-color: rgba(0, 0, 0, 0.5);
+            translate: -50%;
+            width: 1px;
+            color: transparent;
+            border-radius: 100%;
+          }
+
+          button:first-child {
+            border-radius: 10px 0 0 10px;
+
+            img {
+              translate: 0 -1px;
+            }
+
+            &:hover {
+              img {
+                scale: 1.05;
+              }
+            }
+          }
+
+          button:last-child {
+            border-radius: 0 10px 10px 0;
+            height: 36px;
+            &:hover {
+              img {
+                scale: 0.95;
+              }
+            }
+          }
+        }
 
         img {
-          border-radius: 40%;
-          width: 40px;
-          height: 40px;
-          margin-right: 10px;
+          width: 20px;
+          height: 20px;
+          transition: all 0.2s ease-in-out;
         }
+
+        .share_button,
+        .save_button {
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 6px 10px;
+          border-radius: 10px;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+
+    .video_description {
+      margin-top: 20px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+
+      span {
+        font-size: 14px;
+        font-weight: bold;
+        color: gray;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
       }
     }
   }
