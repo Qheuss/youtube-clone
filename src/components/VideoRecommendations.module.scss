@@ -29,14 +29,20 @@
       flex-direction: column;
       gap: 3px;
 
-      h4 {
-        font-size: 16px;
-        font-weight: bold;
+      h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1b1b1b;
       }
 
-      p {
-        font-size: 12px;
-        color: gray;
+      h3 {
+        font-size: 0.75rem;
+        color: #2c2c2c;
+      }
+
+      span {
+        font-size: 0.75rem;
+        color: #555555;
       }
     }
   }

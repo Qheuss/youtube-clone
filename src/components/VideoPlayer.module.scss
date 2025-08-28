@@ -156,5 +156,17 @@
         line-height: 1.5;
       }
     }
+
+    .comments_section {
+      margin-top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .comment_count {
+        font-size: 14px;
+        color: gray;
+      }
+    }
   }
 }

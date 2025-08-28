@@ -4,7 +4,7 @@ interface Video {
   id: string;
   snippet: {
     title: string;
-    channelTitle: string;
+    channelId: string;
     subscriberCount: string;
     publishedAt: string;
     description: string;
@@ -35,7 +35,7 @@ export function useVideo(videoId: string) {
         }
 
         const json = await response.json();
-        setVideo(json.items?.[0] || null); // récupère la 1ère vidéo
+        setVideo(json.items?.[0] || null);
       } catch (err) {
         console.error('Fetch video error:', err);
       } finally {

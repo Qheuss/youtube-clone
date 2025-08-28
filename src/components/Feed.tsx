@@ -1,45 +1,18 @@
 import style from './Feed.module.scss';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import moment from 'moment';
+import { useVideos } from '../hooks/useVideos';
 
 interface FeedProps {
   sidebarOpen: boolean;
   category: number;
 }
 
-interface Video {
-  id: string;
-  snippet: {
-    title: string;
-    channelTitle: string;
-    publishedAt: string;
-    categoryId: string;
-    thumbnails: {
-      medium: {
-        url: string;
-      };
-    };
-  };
-  statistics: {
-    viewCount: string;
-  };
-}
-
 const Feed = ({ sidebarOpen, category }: FeedProps) => {
-  const [data, setData] = useState<Video[]>([]);
+  const { videos, loading, error } = useVideos(category.toString());
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-      const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=48&regionCode=US&videoCategoryId=${category}&key=${API_KEY}`;
-      const response = await fetch(videoList_url);
-      const json = await response.json();
-      setData(json.items || []);
-    };
-
-    fetchData();
-  }, [category]);
+  if (loading) return <p>Loading videos</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className={style.feed}>
@@ -53,7 +26,7 @@ const Feed = ({ sidebarOpen, category }: FeedProps) => {
           ' grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'
         }
       >
-        {data.map((video) => (
+        {videos.map((video) => (
           <li key={video.id} className={style.feedItem}>
             <Link to={`/video/${video.snippet.categoryId}/${video.id}`}>
               <img

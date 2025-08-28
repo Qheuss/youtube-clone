@@ -3,21 +3,23 @@ import likeIcon from '../assets/like.png';
 import dislikeIcon from '../assets/dislike.png';
 import shareIcon from '../assets/share.png';
 import saveIcon from '../assets/save.png';
-import user_profile from '../assets/user_profile.jpg';
 import { useParams } from 'react-router-dom';
 import { useVideo } from '../hooks/useVideo';
 import moment from 'moment';
+import { useChannel } from '../hooks/useChannel';
 
 const VideoPlayer = () => {
   const { videoId } = useParams<{ videoId: string }>();
   const { video, loading } = useVideo(videoId!.toString());
+  const { channel, loading: channelLoading } = useChannel(
+    video?.snippet.channelId ?? ''
+  );
 
-  if (loading) return <p>Loading…</p>;
+  if (loading || channelLoading) return <p>Loading…</p>;
   if (!video) return <p>Unknown video</p>;
 
   return (
     <div className={style.video_player}>
-      {/* <video src={video1} controls autoPlay={false} /> */}
       <iframe
         src={`https://www.youtube.com/embed/${videoId}`}
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen'
@@ -28,13 +30,24 @@ const VideoPlayer = () => {
           <div className={style.channel_info}>
             <button className={style.channel_button}>
               <img
-                src={user_profile}
+                src={channel?.snippet.thumbnails.medium.url}
                 alt='Channel'
                 className={style.channel_avatar}
               />
               <div className={style.channel_details}>
-                <h3>{video.snippet.channelTitle}</h3>
-                {/* <p>{video.statistics.subscriberCount} subs</p> */}
+                <h3>{channel?.snippet.title}</h3>
+                <p>
+                  {Number(channel?.statistics.subscriberCount) >= 1000000
+                    ? (
+                        Number(channel?.statistics.subscriberCount) / 1000000
+                      ).toFixed(0) + 'M'
+                    : Number(channel?.statistics.subscriberCount) >= 1000
+                    ? (
+                        Number(channel?.statistics.subscriberCount) / 1000
+                      ).toFixed(0) + 'K'
+                    : Number(channel?.statistics.subscriberCount)}{' '}
+                  subscribers
+                </p>
               </div>
             </button>
             <button className={style.subscribe_button}>Subscribe</button>
@@ -45,13 +58,13 @@ const VideoPlayer = () => {
               <button>
                 <img src={likeIcon} alt='Like' />
                 <span>
-                  {Number(video.statistics.likeCount) >= 1000
-                    ? (Number(video.statistics.likeCount) / 1000).toFixed(0) +
-                      'k'
-                    : Number(video.statistics.likeCount) >= 1000000
+                  {Number(video.statistics.likeCount) >= 1000000
                     ? (Number(video.statistics.likeCount) / 1000000).toFixed(
                         0
-                      ) + 'm'
+                      ) + 'M'
+                    : Number(video.statistics.likeCount) >= 1000
+                    ? (Number(video.statistics.likeCount) / 1000).toFixed(0) +
+                      'K'
                     : Number(video.statistics.likeCount)}
                 </span>
               </button>
@@ -76,7 +89,12 @@ const VideoPlayer = () => {
             {parseInt(video.statistics.viewCount).toLocaleString()} views &bull;{' '}
             {moment(video.snippet.publishedAt).format('MMM D, YYYY')}
           </span>
-          <p>{video.snippet.description}</p>
+          <p>{video.snippet.description.slice(0, 250)}...</p>
+        </div>
+        <div className={style.comments_section}>
+          <span className={style.comment_count}>
+            {parseInt(video.statistics.commentCount).toLocaleString()} comments
+          </span>
         </div>
       </section>
     </div>

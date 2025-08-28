@@ -152,7 +152,7 @@ const SideBar = ({
 
         <div className={style.sideLink}>
           <img src={simon} alt='Simon' />
-          <span>MrBreast</span>
+          <span>MrBest</span>
         </div>
 
         <div className={style.sideLink}>
