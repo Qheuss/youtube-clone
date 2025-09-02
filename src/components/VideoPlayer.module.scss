@@ -92,12 +92,12 @@
           button:first-child {
             border-radius: 10px 0 0 10px;
 
-            img {
+            svg {
               translate: 0 -1px;
             }
 
             &:hover {
-              img {
+              svg {
                 scale: 1.05;
               }
             }
@@ -106,15 +106,16 @@
           button:last-child {
             border-radius: 0 10px 10px 0;
             height: 36px;
+
             &:hover {
-              img {
+              svg {
                 scale: 0.95;
               }
             }
           }
         }
 
-        img {
+        svg {
           width: 20px;
           height: 20px;
           transition: all 0.2s ease-in-out;

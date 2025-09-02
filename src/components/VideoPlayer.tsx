@@ -1,12 +1,11 @@
 import style from './VideoPlayer.module.scss';
-import likeIcon from '../assets/like.png';
-import dislikeIcon from '../assets/dislike.png';
-import shareIcon from '../assets/share.png';
-import saveIcon from '../assets/save.png';
 import { Link, useParams } from 'react-router-dom';
 import { useVideo } from '../hooks/useVideo';
 import moment from 'moment';
 import { useChannel } from '../hooks/useChannel';
+import { AiFillDislike, AiFillLike } from 'react-icons/ai';
+import { FaShare } from 'react-icons/fa6';
+import { MdOutlineSaveAlt } from 'react-icons/md';
 
 const VideoPlayer = () => {
   const { videoId } = useParams<{ videoId: string }>();
@@ -65,7 +64,7 @@ const VideoPlayer = () => {
           <div className={style.video_actions}>
             <div className={style.like_buttons}>
               <button>
-                <img src={likeIcon} alt='Like' />
+                <AiFillLike />
                 <span>
                   {Number(video.statistics.likeCount) >= 1000000
                     ? (Number(video.statistics.likeCount) / 1000000).toFixed(
@@ -79,15 +78,15 @@ const VideoPlayer = () => {
               </button>
               <hr />
               <button>
-                <img src={dislikeIcon} alt='Dislike' />
+                <AiFillDislike />
               </button>
             </div>
             <button className={style.share_button}>
-              <img src={shareIcon} alt='Share' />
+              <FaShare />
               Share
             </button>
             <button className={style.save_button}>
-              <img src={saveIcon} alt='Save' />
+              <MdOutlineSaveAlt />
               Save
             </button>
           </div>

@@ -1,20 +1,22 @@
 import style from './SideBar.module.scss';
-import menu_icon from '../assets/menu.png';
-import logo from '../assets/logo.png';
-import home from '../assets/home.png';
-import game_icon from '../assets/game_icon.png';
-import automobiles from '../assets/automobiles.png';
-import sports from '../assets/sports.png';
-import entertainment from '../assets/entertainment.png';
-import tech from '../assets/tech.png';
-import music from '../assets/music.png';
-import blogs from '../assets/blogs.png';
-import news from '../assets/news.png';
 import jack from '../assets/jack.png';
 import simon from '../assets/simon.png';
 import tom from '../assets/tom.png';
 import megan from '../assets/megan.png';
 import cameron from '../assets/cameron.png';
+import { FaYoutube } from 'react-icons/fa';
+import { GoHomeFill } from 'react-icons/go';
+import { IoIosMusicalNotes, IoLogoGameControllerA } from 'react-icons/io';
+import {
+  MdBiotech,
+  MdOutlinePets,
+  MdSportsHandball,
+  MdTheaterComedy,
+} from 'react-icons/md';
+import { ImBlog } from 'react-icons/im';
+import { HiNewspaper } from 'react-icons/hi';
+import { IoMenu } from 'react-icons/io5';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface SideBarProps {
   sidebarOpen: boolean;
@@ -29,6 +31,21 @@ const SideBar = ({
   category,
   setCategory,
 }: SideBarProps) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const categories = [
+    { id: 0, icon: <GoHomeFill />, label: 'Home' },
+    { id: 20, icon: <IoLogoGameControllerA />, label: 'Gaming' },
+    { id: 10, icon: <IoIosMusicalNotes />, label: 'Music' },
+    { id: 17, icon: <MdSportsHandball />, label: 'Sports' },
+    { id: 15, icon: <MdOutlinePets />, label: 'Pets & Animals' },
+    { id: 28, icon: <MdBiotech />, label: 'Science & Technology' },
+    { id: 23, icon: <MdTheaterComedy />, label: 'Comedy' },
+    { id: 22, icon: <ImBlog />, label: 'Blogs' },
+    { id: 25, icon: <HiNewspaper />, label: 'News' },
+  ];
+
   return (
     <section
       style={{
@@ -37,107 +54,35 @@ const SideBar = ({
       className={style.sideBar}
     >
       <div className={style.navLogo + ' flexDiv'}>
-        <img
+        <IoMenu
           className={style.menuIcon}
-          src={menu_icon}
-          alt='Menu Icon'
           onClick={() => setSidebarOpen(!sidebarOpen)}
         />
-        <a href='/'>
-          <img className={style.logo} src={logo} alt='Logo' />
+        <a href='/' className={style.logo}>
+          <FaYoutube /> Youte Tube
         </a>
       </div>
 
       <div className={style.sortLinks}>
-        <div
-          className={
-            style.sideLink + ' ' + (category === 0 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(0)}
-        >
-          <img src={home} alt='Home' />
-          <span>Home</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 20 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(20)}
-        >
-          <img src={game_icon} alt='Gaming' />
-          <span>Gaming</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 10 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(10)}
-        >
-          <img src={automobiles} alt='Music' />
-          <span>Music</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 17 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(17)}
-        >
-          <img src={sports} alt='Sports' />
-          <span>Sports</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 15 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(15)}
-        >
-          <img src={entertainment} alt='Pets & Animals' />
-          <span>Pets & Animals</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 28 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(28)}
-        >
-          <img src={tech} alt='Science & Technology' />
-          <span>Science & Technology</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 23 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(23)}
-        >
-          <img src={music} alt='Comedy' />
-          <span>Comedy</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 22 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(22)}
-        >
-          <img src={blogs} alt='Blogs' />
-          <span>Blogs</span>
-        </div>
-
-        <div
-          className={
-            style.sideLink + ' ' + (category === 25 ? 'bg-black/10' : '')
-          }
-          onClick={() => setCategory(25)}
-        >
-          <img src={news} alt='News' />
-          <span>News</span>
-        </div>
+        {categories.map(({ id, icon, label }) => (
+          <div
+            key={id}
+            className={
+              style.sideLink + ' ' + (category === id ? 'bg-black/10' : '')
+            }
+            onClick={
+              location.pathname === '/'
+                ? () => setCategory(id)
+                : () => {
+                    navigate('/');
+                    setCategory(id);
+                  }
+            }
+          >
+            {icon}
+            <span>{label}</span>
+          </div>
+        ))}
 
         <hr />
       </div>

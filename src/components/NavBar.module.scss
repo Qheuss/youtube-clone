@@ -11,12 +11,24 @@
 
     .menuIcon {
       width: 22px;
-      margin-right: 25px;
+      height: auto;
+      margin-right: 15px;
       cursor: pointer;
     }
 
     .logo {
-      width: 130px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #222;
+
+      svg {
+        color: #d30303;
+        width: 40px;
+        height: auto;
+      }
     }
   }
 
@@ -35,23 +47,33 @@
         font-size: 14px;
       }
 
-      img {
+      svg {
         width: 20px;
-        height: 20px;
+        height: auto;
+        cursor: pointer;
       }
     }
   }
 
   .navRight {
     padding: 0 8px;
-    img {
+
+    svg {
       width: 25px;
+      height: auto;
       margin-left: 15px;
+      cursor: pointer;
+
+      &:first-child {
+        color: #d30303;
+      }
     }
 
     .userIcon {
       width: 35px;
       border-radius: 40%;
+      margin-left: 15px;
+      cursor: pointer;
     }
   }
 }
