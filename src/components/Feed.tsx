@@ -1,17 +1,38 @@
 import style from './Feed.module.scss';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { useVideos } from '../hooks/useVideos';
+import { useVideos, type Video } from '../hooks/useVideos';
+import { useSearchSuggestions } from '../hooks/useSearchSuggestions';
+import { useEffect, useState } from 'react';
 
 interface FeedProps {
   sidebarOpen: boolean;
   category: number;
+  searchQuery: string;
 }
 
-const Feed = ({ sidebarOpen, category }: FeedProps) => {
-  const { videos, loading, error } = useVideos(category.toString());
+const Feed = ({ sidebarOpen, category, searchQuery }: FeedProps) => {
+  const [videos, setVideos] = useState<Video[]>([]);
+  const {
+    videos: fetchedVideos,
+    loading,
+    error,
+  } = useVideos(category.toString());
+  const { suggestions, loading: suggestionsLoading } =
+    useSearchSuggestions(searchQuery);
 
-  if (loading) return <p>Loading videos</p>;
+  const showSuggestions = searchQuery.length > 0;
+
+  useEffect(() => {
+    if (showSuggestions) {
+      setVideos(suggestions);
+    } else {
+      setVideos(fetchedVideos);
+    }
+  }, [showSuggestions, fetchedVideos, suggestions]);
+
+  if (loading || (showSuggestions && suggestionsLoading))
+    return <p>Loading videos…</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (

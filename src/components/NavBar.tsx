@@ -5,13 +5,26 @@ import { FaCloudUploadAlt, FaYoutube } from 'react-icons/fa';
 import { IoMenu, IoSearch } from 'react-icons/io5';
 import { FaPlus } from 'react-icons/fa6';
 import { IoIosNotifications } from 'react-icons/io';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NavBarProps {
   setSidebarOpen: (open: boolean) => void;
   sidebarOpen: boolean;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  onSearchSubmit: () => void;
 }
 
-const NavBar = ({ setSidebarOpen, sidebarOpen }: NavBarProps) => {
+const NavBar = ({
+  setSidebarOpen,
+  sidebarOpen,
+  searchQuery,
+  setSearchQuery,
+  onSearchSubmit,
+}: NavBarProps) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       const navElement = document.querySelector('nav');
@@ -48,8 +61,35 @@ const NavBar = ({ setSidebarOpen, sidebarOpen }: NavBarProps) => {
 
       <div className={style.navMiddle + ' flexDiv'}>
         <div className={style.searchBox + ' flexDiv'}>
-          <input type='text' placeholder='Search' id='search' />
-          <IoSearch />
+          <input
+            type='text'
+            placeholder='Search'
+            id='search'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={
+              location.pathname === '/'
+                ? (e) => {
+                    if (e.key === 'Enter') onSearchSubmit();
+                  }
+                : (e) => {
+                    if (e.key === 'Enter') {
+                      navigate('/');
+                      onSearchSubmit();
+                    }
+                  }
+            }
+          />
+          <IoSearch
+            onClick={() => {
+              if (location.pathname === '/') {
+                onSearchSubmit();
+              } else {
+                navigate('/');
+                onSearchSubmit();
+              }
+            }}
+          />
         </div>
       </div>
 

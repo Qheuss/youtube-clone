@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-interface Video {
+export interface Video {
   id: string;
   snippet: {
     title: string;
@@ -9,7 +9,6 @@ interface Video {
     categoryId: string;
     thumbnails: {
       medium: { url: string };
-      high: { url: string };
     };
   };
   statistics: {

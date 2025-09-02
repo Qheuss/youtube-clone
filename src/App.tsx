@@ -10,10 +10,22 @@ import Channel from './pages/Channel/Channel';
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [category, setCategory] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [submittedQuery, setSubmittedQuery] = useState('');
+
+  const handleSearchSubmit = () => {
+    setSubmittedQuery(searchQuery);
+  };
 
   return (
     <div className='flex flex-col min-h-screen'>
-      <NavBar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
+      <NavBar
+        setSidebarOpen={setSidebarOpen}
+        sidebarOpen={sidebarOpen}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSearchSubmit={handleSearchSubmit}
+      />
       <SideBar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
@@ -24,13 +36,13 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<Home sidebarOpen={sidebarOpen} category={category} />}
+            element={<Home sidebarOpen={sidebarOpen} category={category} searchQuery={submittedQuery} />}
           />
           <Route path='/:categoryId/:videoId' element={<Video />} />
           <Route path='/:channelId' element={<Channel />} />
           <Route
             path='/*'
-            element={<Home sidebarOpen={sidebarOpen} category={category} />}
+            element={<Home sidebarOpen={sidebarOpen} category={category} searchQuery={submittedQuery} />}
           />
         </Routes>
       </main>
