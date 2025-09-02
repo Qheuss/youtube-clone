@@ -1,3 +1,14 @@
+.channelBanner {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+
+  @media (min-width: 768px) {
+    width: 100%;
+    height: 200px;
+  }
+}
+
 .channelInfos {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 2rem 3rem;
@@ -12,11 +23,16 @@
     gap: 1.5rem;
 
     .channelThumbnail {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: auto;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+
+      @media (min-width: 768px) {
+        width: 200px;
+        height: auto;
+      }
     }
 
     .channelDetails {
@@ -55,6 +71,7 @@
     color: #333;
     font-size: 1.1rem;
     margin: 0;
+    max-width: 500px;
   }
 
   .channelVideos {

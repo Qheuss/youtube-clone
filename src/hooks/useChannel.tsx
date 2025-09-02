@@ -20,6 +20,11 @@ export interface Channel {
       uploads: string;
     };
   };
+  brandingSettings: {
+    image: {
+      bannerExternalUrl: string;
+    };
+  };
 }
 
 interface ChannelApiResponse {
@@ -43,7 +48,7 @@ export const useChannel = (channelId: string | null) => {
 
       try {
         const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-        const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&id=${channelId}&key=${API_KEY}`;
+        const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails,brandingSettings&id=${channelId}&key=${API_KEY}`;
 
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);

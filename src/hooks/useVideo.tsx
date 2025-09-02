@@ -17,6 +17,9 @@ interface Video {
     likeCount: string;
     commentCount: string;
   };
+  contentDetails: {
+    duration: string;
+  };
 }
 
 export function useVideo(videoId: string) {

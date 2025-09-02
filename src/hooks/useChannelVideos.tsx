@@ -14,6 +14,9 @@ export interface Video {
   statistics: {
     viewCount: string;
   };
+  contentDetails: {
+    duration: string;
+  };
 }
 
 interface PlaylistItemsResponse {

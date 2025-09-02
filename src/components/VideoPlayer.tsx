@@ -97,7 +97,7 @@ const VideoPlayer = () => {
             {parseInt(video.statistics.viewCount).toLocaleString()} views &bull;{' '}
             {moment(video.snippet.publishedAt).format('MMM D, YYYY')}
           </span>
-          <p>{video.snippet.description.slice(0, 250)}...</p>
+          <p>{video.snippet.description.slice(0, 250)} ...</p>
         </div>
         <div className={style.comments_section}>
           <span className={style.comment_count}>
