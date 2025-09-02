@@ -5,6 +5,7 @@ import Video from './pages/Video/Video';
 import { useState } from 'react';
 import Footer from './components/Footer';
 import SideBar from './components/SideBar';
+import Channel from './pages/Channel/Channel';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -25,9 +26,11 @@ function App() {
             path='/'
             element={<Home sidebarOpen={sidebarOpen} category={category} />}
           />
+          <Route path='/:categoryId/:videoId' element={<Video />} />
+          <Route path='/:channelId' element={<Channel />} />
           <Route
-            path='/video/:categoryId/:videoId'
-            element={<Video sidebarOpen={sidebarOpen} />}
+            path='/*'
+            element={<Home sidebarOpen={sidebarOpen} category={category} />}
           />
         </Routes>
       </main>

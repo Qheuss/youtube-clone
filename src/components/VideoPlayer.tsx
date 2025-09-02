@@ -3,7 +3,7 @@ import likeIcon from '../assets/like.png';
 import dislikeIcon from '../assets/dislike.png';
 import shareIcon from '../assets/share.png';
 import saveIcon from '../assets/save.png';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useVideo } from '../hooks/useVideo';
 import moment from 'moment';
 import { useChannel } from '../hooks/useChannel';
@@ -28,7 +28,10 @@ const VideoPlayer = () => {
         <h1>{video.snippet.title}</h1>
         <div className={style.video_info}>
           <div className={style.channel_info}>
-            <button className={style.channel_button}>
+            <Link
+              to={`/${video.snippet.channelId}`}
+              className={style.channel_button}
+            >
               <img
                 src={channel?.snippet.thumbnails.medium.url}
                 alt='Channel'
@@ -49,8 +52,14 @@ const VideoPlayer = () => {
                   subscribers
                 </p>
               </div>
-            </button>
-            <button className={style.subscribe_button}>Subscribe</button>
+            </Link>
+            <a
+              href={`https://www.youtube.com/channel/${channel?.id}`}
+              target='_blank'
+              className={style.subscribe_button}
+            >
+              Subscribe
+            </a>
           </div>
 
           <div className={style.video_actions}>

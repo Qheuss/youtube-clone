@@ -2,17 +2,9 @@ import VideoPlayer from '../../components/VideoPlayer';
 import VideoRecommendations from '../../components/VideoRecommendations';
 import style from './Video.module.scss';
 
-interface VideoProps {
-  sidebarOpen: boolean;
-}
-
-const Video = ({ sidebarOpen }: VideoProps) => {
+const Video = () => {
   return (
     <>
-      <div
-        style={{ minWidth: sidebarOpen ? '240px' : '0' }}
-        className={style.sidebar}
-      ></div>
       <div className={style.video}>
         <VideoPlayer />
         <VideoRecommendations />

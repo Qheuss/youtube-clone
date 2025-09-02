@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react';
 
-export interface ChannelStatistics {
-  viewCount: string;
-  subscriberCount: string;
-  hiddenSubscriberCount: boolean;
-  videoCount: string;
-}
-
-export interface ChannelSnippet {
-  title: string;
-  description: string;
-  thumbnails: {
-    medium: { url: string };
-  };
-}
-
 export interface Channel {
   id: string;
-  snippet: ChannelSnippet;
-  statistics: ChannelStatistics;
+  snippet: {
+    title: string;
+    description: string;
+    thumbnails: {
+      medium: { url: string };
+    };
+  };
+  statistics: {
+    viewCount: string;
+    subscriberCount: string;
+    hiddenSubscriberCount: boolean;
+    videoCount: string;
+  };
+  contentDetails: {
+    relatedPlaylists: {
+      uploads: string;
+    };
+  };
 }
 
 interface ChannelApiResponse {
@@ -29,6 +30,9 @@ export const useChannel = (channelId: string | null) => {
   const [channel, setChannel] = useState<Channel | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [uploadsPlaylistId, setUploadsPlaylistId] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     if (!channelId) return;
@@ -39,7 +43,7 @@ export const useChannel = (channelId: string | null) => {
 
       try {
         const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-        const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${API_KEY}`;
+        const url = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&id=${channelId}&key=${API_KEY}`;
 
         const response = await fetch(url);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -51,6 +55,9 @@ export const useChannel = (channelId: string | null) => {
         }
 
         setChannel(json.items[0]);
+        setUploadsPlaylistId(
+          json.items[0].contentDetails.relatedPlaylists.uploads
+        );
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -65,5 +72,5 @@ export const useChannel = (channelId: string | null) => {
     fetchChannel();
   }, [channelId]);
 
-  return { channel, loading, error };
+  return { channel, uploadsPlaylistId, loading, error };
 };

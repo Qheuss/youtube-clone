@@ -1,25 +1,21 @@
-import style from './Feed.module.scss';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { useVideos } from '../hooks/useVideos';
+import style from './Feed.module.scss';
+import { useChannelVideos } from '../hooks/useChannelVideos';
+import { Link } from 'react-router-dom';
 
-interface FeedProps {
-  sidebarOpen: boolean;
-  category: number;
+interface ChannelVideosProps {
+  uploadsPlaylistId: string | null;
 }
 
-const Feed = ({ sidebarOpen, category }: FeedProps) => {
-  const { videos, loading, error } = useVideos(category.toString());
+const ChannelVideos = ({ uploadsPlaylistId }: ChannelVideosProps) => {
+  const { videos, loading, error } = useChannelVideos(uploadsPlaylistId ?? '');
 
-  if (loading) return <p>Loading videos</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!videos || videos.length === 0) return <div>No videos found</div>;
 
   return (
     <div className={style.feed}>
-      <div
-        style={{ minWidth: sidebarOpen ? '240px' : '0' }}
-        className={style.sidebar}
-      ></div>
       <ul
         className={
           style.feedContainer +
@@ -53,4 +49,4 @@ const Feed = ({ sidebarOpen, category }: FeedProps) => {
   );
 };
 
-export default Feed;
+export default ChannelVideos;

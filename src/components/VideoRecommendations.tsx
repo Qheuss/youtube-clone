@@ -14,7 +14,7 @@ const VideoRecommendations = () => {
     <div className={style.recommendations}>
       {videos.map((video) => (
         <Link
-          to={`/video/${video.snippet.categoryId}/${video.id}`}
+          to={`/${video.snippet.categoryId}/${video.id}`}
           key={video.id}
           className={style.videoCard}
         >
