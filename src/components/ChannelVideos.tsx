@@ -25,10 +25,32 @@ const ChannelVideos = ({ uploadsPlaylistId }: ChannelVideosProps) => {
         {videos.map((video) => (
           <li key={video.id} className={style.feedItem}>
             <Link to={`/${video.snippet.categoryId}/${video.id}`}>
-              <img
-                src={video.snippet.thumbnails.medium.url}
-                alt={`thumbnail${video.id}`}
-              />
+              <div className='relative'>
+                <img
+                  src={video.snippet.thumbnails.medium.url}
+                  alt={`thumbnail${video.id}`}
+                />
+                <span className='absolute bottom-2 right-2 bg-black/60  text-white text-xs rounded !py-1 !px-2 shadow-md'>
+                  {Math.floor(
+                    moment.duration(video.contentDetails.duration).asMinutes() /
+                      60
+                  ) > 0 &&
+                    Math.floor(
+                      moment
+                        .duration(video.contentDetails.duration)
+                        .asMinutes() / 60
+                    ) + ':'}
+                  {Math.floor(
+                    moment.duration(video.contentDetails.duration).asMinutes() %
+                      60
+                  )}
+                  :
+                  {moment.duration(video.contentDetails.duration).seconds() <= 9
+                    ? '0' +
+                      moment.duration(video.contentDetails.duration).seconds()
+                    : moment.duration(video.contentDetails.duration).seconds()}
+                </span>
+              </div>
               <div className={style.videoInfo}>
                 <h2>
                   {video.snippet.title.length > 35

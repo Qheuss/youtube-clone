@@ -36,13 +36,25 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<Home sidebarOpen={sidebarOpen} category={category} searchQuery={submittedQuery} />}
+            element={
+              <Home
+                sidebarOpen={sidebarOpen}
+                category={category}
+                searchQuery={submittedQuery}
+              />
+            }
           />
           <Route path='/:categoryId/:videoId' element={<Video />} />
           <Route path='/:channelId' element={<Channel />} />
           <Route
             path='/*'
-            element={<Home sidebarOpen={sidebarOpen} category={category} searchQuery={submittedQuery} />}
+            element={
+              <Home
+                sidebarOpen={sidebarOpen}
+                category={category}
+                searchQuery={submittedQuery}
+              />
+            }
           />
         </Routes>
       </main>

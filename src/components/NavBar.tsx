@@ -94,9 +94,9 @@ const NavBar = ({
       </div>
 
       <div className={style.navRight + ' flexDiv'}>
-        <FaCloudUploadAlt />
-        <FaPlus />
-        <IoIosNotifications />
+        <FaCloudUploadAlt className='md:block hidden' />
+        <FaPlus className='md:block hidden' />
+        <IoIosNotifications className='md:block hidden' />
         <img className={style.userIcon} src={profile_icon} alt='Profile Icon' />
       </div>
     </nav>

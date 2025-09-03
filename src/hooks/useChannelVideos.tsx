@@ -63,7 +63,7 @@ export const useChannelVideos = (uploadsPlaylistId: string) => {
           return;
         }
 
-        const videosUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoIds}&key=${API_KEY}`;
+        const videosUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics,contentDetails&id=${videoIds}&key=${API_KEY}`;
         const videosRes = await fetch(videosUrl);
         if (!videosRes.ok) throw new Error(`HTTP ${videosRes.status}`);
         const videosJson: VideosResponse = await videosRes.json();

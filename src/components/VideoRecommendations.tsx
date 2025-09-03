@@ -18,11 +18,28 @@ const VideoRecommendations = () => {
           key={video.id}
           className={style.videoCard}
         >
-          <img
-            src={video.snippet.thumbnails.medium.url}
-            alt={video.snippet.title}
-            className={style.thumbnail}
-          />
+          <div className={style.videoThumbnail}>
+            <img
+              src={video.snippet.thumbnails.medium.url}
+              alt={`thumbnail${video.id}`}
+            />
+            <span className='absolute bottom-2 right-2 bg-black/60  text-white text-xs rounded !py-1 !px-2 shadow-md'>
+              {Math.floor(
+                moment.duration(video.contentDetails.duration).asMinutes() / 60
+              ) > 0 &&
+                Math.floor(
+                  moment.duration(video.contentDetails.duration).asMinutes() /
+                    60
+                ) + ':'}
+              {Math.floor(
+                moment.duration(video.contentDetails.duration).asMinutes() % 60
+              )}
+              :
+              {moment.duration(video.contentDetails.duration).seconds() <= 9
+                ? '0' + moment.duration(video.contentDetails.duration).seconds()
+                : moment.duration(video.contentDetails.duration).seconds()}
+            </span>
+          </div>
           <div className={style.videoInfo}>
             <h2 className={style.videoTitle}>
               {video.snippet.title.length > 25

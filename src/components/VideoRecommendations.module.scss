@@ -1,16 +1,24 @@
 .recommendations {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 20px;
-  width: 402px;
+  min-width: 168px;
+
+  @media (min-width: 900px) {
+    display: flex;
+  }
 
   .videoCard {
     display: flex;
-    width: 100%;
+    width: fit-content;
     gap: 10px;
     text-align: start;
     border-radius: 8px;
     cursor: pointer;
+
+    @media (min-width: 1200px) {
+      width: 340px;
+    }
 
     &:hover {
       img {
@@ -18,16 +26,25 @@
       }
     }
 
-    img {
-      border-radius: 8px;
-      width: 168px;
-      height: 94px;
+    .videoThumbnail {
+      flex: none;
+      position: relative;
+
+      img {
+        border-radius: 8px;
+        width: 168px;
+        height: 94px;
+      }
     }
 
     .videoInfo {
-      display: flex;
+      display: none;
       flex-direction: column;
       gap: 3px;
+
+      @media (min-width: 1200px) {
+        display: flex;
+      }
 
       h2 {
         font-size: 1rem;
