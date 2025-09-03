@@ -38,7 +38,7 @@ const Feed = ({ sidebarOpen, category, searchQuery }: FeedProps) => {
   return (
     <div className={style.feed}>
       <div
-        style={{ minWidth: sidebarOpen ? '240px' : '0' }}
+        style={{ minWidth: sidebarOpen ? '244px' : '0' }}
         className={style.sidebar + ' md:block hidden'}
       ></div>
       <ul

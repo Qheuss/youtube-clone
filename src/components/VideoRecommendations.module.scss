@@ -1,7 +1,6 @@
 .recommendations {
   display: none;
   flex-direction: column;
-  gap: 20px;
   min-width: 168px;
 
   @media (min-width: 900px) {
@@ -15,6 +14,7 @@
     text-align: start;
     border-radius: 8px;
     cursor: pointer;
+    margin-bottom: 20px;
 
     @media (min-width: 1200px) {
       width: 340px;
@@ -55,10 +55,12 @@
       h3 {
         font-size: 0.75rem;
         color: #2c2c2c;
+        overflow: hidden;
+        white-space: nowrap;
       }
 
       span {
-        font-size: 0.75rem;
+        font-size: 0.76rem;
         color: #555555;
       }
     }
